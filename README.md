@@ -74,5 +74,6 @@ Connect directly to the production database and load data from `vw_freight_invoi
 
 Open the global report to see automated metrics updated live.
 
+---
 📄 License
 This repository is distributed under the open-source MIT License. Feel free to leverage the data schema models or algorithms for commercial or learning initiatives.
