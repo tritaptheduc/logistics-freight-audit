@@ -58,6 +58,7 @@ Run the generator script to compile the synthetic databases into flat files:
 ```bash
 pip install pandas
 python src/01_data_generator.py
+```
 
 ### Step 2: BigQuery Cloud Implementation
 Create a dataset named `freight_audit_db` inside your BigQuery environment.
