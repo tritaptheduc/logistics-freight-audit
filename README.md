@@ -58,8 +58,8 @@ The core engine automatically parses every single invoice record through 3 layer
 
 1. **Base Rate Validation:**
    - *Logic:* The system checks the actual weight against the contract weight break. If `Actual_Weight` $\le$ `Weight_Break_Kg`, the expected base rate is exactly the `Base_Rate`. If it exceeds, the formula dynamically applies: 
-     ```math
-      \text{Expected Base Rate} = \text{Base Rate} + [(\text{Actual Weight} - \text{Weight Break}) \times \text{Per Kg Overweight}]
+     ```text
+     Expected Base Rate = Base Rate + [(Actual Weight - Weight Break) * Per Kg Overweight]
      ```
    - *Threshold rule:* Any discrepancy between `Invoiced_Base_Rate` and `Expected Base Rate` that exceeds a tolerance threshold of **$0.05** is flagged as a billing anomaly.
 
