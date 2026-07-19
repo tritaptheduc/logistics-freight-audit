@@ -75,7 +75,7 @@ The engine evaluates invoice accuracy by systematically processing every transac
 5. **Rule 5: Demurrage Standard Calculation Check (`DEMURRAGE_OVERCHARGE`)**
    - *Logic:* Applies the industry penalty rate ($50.00 USD per day for excess days):
    
-     $$$\text{Expected Demurrage} = \text{MAX}(0, \text{Actual Demurrage Days} - \text{Free Demurrage Days}) \times 50.0$$
+     $$\text{Expected Demurrage} = \text{MAX}(0, \text{Actual Demurrage Days} - \text{Free Demurrage Days}) \times 50.0$$
    - *Discrepancy:* Flagged if the carrier's billed demurrage fee exceeds this calculation.
 
 ---
