@@ -66,7 +66,11 @@ The core engine automatically parses every single invoice record through 3 layer
 2. **Fuel Surcharge Cap Control:**
    - *Logic:* Fuel surcharges fluctuate monthly but are contractually capped at a fixed **15%** maximum of the valid Expected Base Rate.
    - *Threshold rule:*
-     If `Invoiced`/`Surcharges` > `Expected Base Rate` x `0.15$`, the system marks the excess amount as "Leakage Due to Overcharged Fuel Surcharge".
+     If
+     ```text
+     (Invoiced/Surcharges) > (Expected Base Rate x 0.15$)
+     ```
+     the system marks the excess amount as "Leakage Due to Overcharged Fuel Surcharge".
 
 3. **Status Classification Logic:**
    - **`Matched`**: Total invoiced amount equals total contractually calculated rate ($\pm \$0.05$).
