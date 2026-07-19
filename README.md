@@ -108,7 +108,7 @@ An interactive Power BI dashboard dashboard was connected directly to this clean
 ## 📸 Dashboard Interface Preview
 *(Tip: Capture clean screenshots of your newly themed Freight Audit dashboard, save them under reports/ and link them here)*
 
-![Freight Audit Summary View](reports/audit_dashboard_main.jpg)
+![Freight Audit Summary View](assets/audit-dashboard-main.png)
 *Figure 1: Core Financial Overview & Carrier Audit Discrepancy Matrix*
 
 ---
