@@ -68,9 +68,9 @@ The engine evaluates invoice accuracy by systematically processing every transac
    - *Logic:* Compares `Billed_Base_Rate_USD` directly against `Agreed_Base_Rate_USD` from the contract dim table. Any billing variance where the invoice rate exceeds the contract rate triggers a flag.
 3. **Rule 3: Fuel Surcharge Accuracy (`FUEL_SURCHARGE_OVERCHARGE`)**
    - *Logic:* Re-calculates the correct fuel fee based on contract metrics:
-     ```math
+     
      $$\text{Expected Fuel Surcharge} = \text{Agreed Base Rate} \times \text{Agreed Fuel Surcharge Pct}$$
-     ```
+     
    - *Discrepancy:* Flagged if the carrier's billed fuel charge exceeds this exact calculation.
 4. **Rule 4: Invalid Port Penalty Claims (`INVALID_DEMURRAGE_CHARGE`)**
    - *Logic:* Identifies scenarios where `Actual_Demurrage_Days` $\le$ `Free_Demurrage_Days`, meaning the container never breached the free period, yet the carrier billed a `Billed_Demurrage_USD` $> 0$.
