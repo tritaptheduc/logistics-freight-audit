@@ -68,14 +68,17 @@ The engine evaluates invoice accuracy by systematically processing every transac
    - *Logic:* Compares `Billed_Base_Rate_USD` directly against `Agreed_Base_Rate_USD` from the contract dim table. Any billing variance where the invoice rate exceeds the contract rate triggers a flag.
 3. **Rule 3: Fuel Surcharge Accuracy (`FUEL_SURCHARGE_OVERCHARGE`)**
    - *Logic:* Re-calculates the correct fuel fee based on contract metrics:
+     ```math
      $$\text{Expected Fuel Surcharge} = \text{Agreed Base Rate} \times \text{Agreed Fuel Surcharge Pct}$$
+     ```
    - *Discrepancy:* Flagged if the carrier's billed fuel charge exceeds this exact calculation.
 4. **Rule 4: Invalid Port Penalty Claims (`INVALID_DEMURRAGE_CHARGE`)**
    - *Logic:* Identifies scenarios where `Actual_Demurrage_Days` $\le$ `Free_Demurrage_Days`, meaning the container never breached the free period, yet the carrier billed a `Billed_Demurrage_USD` $> 0$.
 5. **Rule 5: Demurrage Standard Calculation Check (`DEMURRAGE_OVERCHARGE`)**
    - *Logic:* Applies the industry penalty rate ($50.00 USD per day for excess days):
-
+     ```math
      $$\text{Expected Demurrage} = \text{MAX}(0, \text{Actual Demurrage Days} - \text{Free Demurrage Days}) \times 50.0$$
+     ```
    - *Discrepancy:* Flagged if the carrier's billed demurrage fee exceeds this calculation.
 
 ---
@@ -96,7 +99,9 @@ By implementing the automated SQL audit view (`vw_freight_invoice_audit`), we cl
 
 ### 🚀 4. IMPROVE: Automated SQL Engine Deployment
 The core programmatic logic was moved into an optimized, self-correcting SQL View architecture. The engine dynamically evaluates the validity of every cost item and computes `Recoverable_Overcharge_USD` automatically via:
+```math
 $$\text{Recoverable Overcharge} = \text{Billed Total Amount} - \text{Expected Total Amount}$$
+```
 An interactive Power BI dashboard dashboard was connected directly to this clean analytical layer, allowing the logistics audit team to instantly isolate high-risk carriers, export verified audit trails, and withhold payment before making out-of-pocket settlements.
 
 ### 🎛️ 5. CONTROL: Pre-settlement Financial Governance
